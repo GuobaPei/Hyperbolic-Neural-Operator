@@ -1,0 +1,54 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Environments and packaging
+.venv*/
+venv/
+env/
+build/
+dist/
+*.egg-info/
+.env
+.env.*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Data, checkpoints, logs, and generated outputs
+data/
+datasets/
+outputs/
+checkpoints/
+logs/
+runs/
+wandb/
+tensorboard/
+metrics/
+results/
+viz_outputs/
+*.pt
+*.pth
+*.ckpt
+*.mat
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.vtk
+*.vtu
+*.vtp
+*.csv
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+*.swo

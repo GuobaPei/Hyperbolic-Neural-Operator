@@ -1,0 +1,62 @@
+darcy:
+  hidden: 96
+  layers: 4
+  heads: 4
+  patch_size: 5
+  hyp_dim: 16
+  mlp_ratio: 2.5
+  lr: 1.0e-3
+  epochs: 500
+  batch_size: 8
+airfoil:
+  hidden: 56
+  layers: 5
+  heads: 4
+  patch_size: 5
+  hyp_dim: 16
+  mlp_ratio: 2.5
+  lr: 1.0e-3
+  epochs: 800
+  batch_size: 8
+pipe:
+  hidden: 132
+  layers: 4
+  heads: 4
+  patch_size: 3
+  hyp_dim: 16
+  mlp_ratio: 2.5
+  lr: 1.0e-3
+  epochs: 500
+  batch_size: 8
+navier_stokes:
+  hidden: 132
+  layers: 4
+  heads: 4
+  patch_size: 4
+  hyp_dim: 16
+  mlp_ratio: 2.0
+  lr: 1.0e-3
+  epochs: 500
+  batch_size: 8
+plasticity:
+  hidden: 128
+  layers: 5
+  heads: 8
+  patch_size: 3
+  hyp_dim: 16
+  mlp_ratio: 2.0
+  lr: 8.0e-4
+  epochs: 500
+  batch_size: 16
+  max_grad_norm: 0.1
+elasticity:
+  hidden: 384
+  layers: 6
+  heads: 8
+  num_latents: 96
+  hyp_dim: 16
+  mlp_ratio: 2.5
+  lr: 5.0e-4
+  epochs: 300
+  batch_size: 4
+

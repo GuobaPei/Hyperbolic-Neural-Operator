@@ -1,0 +1,19 @@
+# Base
+numpy
+tqdm
+einops
+torch
+timm
+scikit-learn
+
+# Geometry / IO
+pyvista
+vtk
+
+# PyG stack (platform-dependent; see `scripts/setup_large_scale_env.sh`)
+torch_geometric
+pyg_lib
+torch_scatter
+torch_sparse
+torch_cluster
+torch_spline_conv

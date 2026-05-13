@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the Hyperbolic Neural Operator paper."
+title: "Hyperbolic Neural Operator"
+version: "1.0.0"
+date-released: 2026-05-08
+url: "https://github.com/GuobaPei/Hyperbolic-Neural-Operator"
+authors:
+  - family-names: Pei
+    given-names: Jieyuan
+  - family-names: Li
+    given-names: Zhuoxuan
+  - family-names: Li
+    given-names: Wei
+  - family-names: Zhang
+    given-names: Haobo
+  - family-names: Jiang
+    given-names: Jiawei
+  - family-names: Zheng
+    given-names: Jianwei
+preferred-citation:
+  type: conference-paper
+  title: "Hyperbolic Neural Operator"
+  collection-title: "Proceedings of the 43rd International Conference on Machine Learning"
+  publisher:
+    name: "PMLR"
+  volume: 306
+  year: 2026
+  authors:
+    - family-names: Pei
+      given-names: Jieyuan
+    - family-names: Li
+      given-names: Zhuoxuan
+    - family-names: Li
+      given-names: Wei
+    - family-names: Zhang
+      given-names: Haobo
+    - family-names: Jiang
+      given-names: Jiawei
+    - family-names: Zheng
+      given-names: Jianwei
