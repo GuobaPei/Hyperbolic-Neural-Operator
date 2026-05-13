@@ -1,27 +1,33 @@
 # Hyperbolic Neural Operator
 
-🎉 **Accepted to ICML 2026.** Congratulations to all co-authors.
+### Hyperbolic geometry for hierarchy-aware PDE operator learning
 
-**Hyperbolic Neural Operator (HNO)** is a hierarchy-aware neural operator for
-PDE surrogate modeling. It replaces standard dot-product routing with
-stabilized Lorentz-hyperbolic distance kernels, giving the model a learned
-near-field/far-field organization.
+[![ICML 2026](https://img.shields.io/badge/ICML-2026-d45b3f?style=flat-square)](https://icml.cc/virtual/2026/poster/65554)
+[![Project](https://img.shields.io/badge/Project-HNO-258f86?style=flat-square)](https://guobapei.github.io/Hyperbolic-Neural-Operator/)
+[![Code](https://img.shields.io/badge/Code-GitHub-24292f?style=flat-square&logo=github)](https://github.com/GuobaPei/Hyperbolic-Neural-Operator)
+[![License](https://img.shields.io/badge/License-MIT-7fbf3f?style=flat-square)](LICENSE)
 
-🔗 [Project page](https://guobapei.github.io/Hyperbolic-Neural-Operator/) ·
-📄 [ICML page](https://icml.cc/virtual/2026/poster/65554)
+🎉 **Hyperbolic Neural Operator (HNO) has been accepted to ICML 2026.**
+
+We present **HNO**, a neural operator that learns near-far interaction routing
+with stabilized Lorentz-hyperbolic distance kernels. HNO gives tokens a learned
+scale coordinate, enabling compact hierarchical PDE surrogate modeling across
+regular grids, structured meshes, point clouds, and large-scale CFD.
+
+Key contributions include:
+
+- **Hyperbolic routing kernel:** replaces dot-product token mixing with
+  stabilized hyperbolic-distance attention.
+- **Near-far physical organization:** learns FMM-inspired local-detail and
+  far-field-summary structure without hand-built trees.
+- **Broad PDE and CFD validation:** includes PDEBench tasks plus AirfRANS and
+  ShapeNetCar large-scale unstructured meshes.
+
+## 📊 Overview
 
 <p align="center">
-  <img src="figures/hno_motivation.png" alt="HNO motivation" width="900">
+  <img src="figures/hno_motivation.png" alt="HNO overview" width="900">
 </p>
-
-## ✨ Highlights
-
-- Hyperbolic-distance attention for hierarchy-aware PDE operator learning.
-- FMM-inspired near/far routing without hand-built trees or multipole rules.
-- PDEBench scripts for Elasticity, Navier-Stokes, Darcy, Plasticity, Airfoil,
-  and Pipe.
-- Large-scale CFD code for AirfRANS and ShapeNetCar.
-- Website source is in `docs/`.
 
 ## 🚀 Quick Start
 
@@ -33,29 +39,20 @@ python -m pip install -r requirements_pdebench.txt
 bash scripts/smoke_test.sh
 ```
 
-Run one PDEBench task:
+Run one task:
 
 ```bash
 python -m pdebench.scripts.train_darcy --data_path <DARCY_DATA_DIR>
 ```
 
-Wrapper scripts are provided under `scripts/`, for example:
-
-```bash
-bash scripts/run_pdebench_all.sh <PDEBENCH_DATA_ROOT>
-```
-
-Large-scale CFD dependencies are listed separately in
-`requirements_large_scale.txt`.
-
-## 📁 Layout
+## 📁 Repository
 
 ```text
-pdebench/       HNO models, configs, PDEBench training scripts
+pdebench/       HNO models, configs, and PDEBench training scripts
 large_scale/    AirfRANS and ShapeNetCar code
 scripts/        setup, smoke-test, and run wrappers
-docs/           project website for GitHub Pages
-figures/        lightweight README figures
+docs/           project website source
+figures/        README figures
 ```
 
 Datasets, checkpoints, logs, and generated caches are not included.
@@ -76,4 +73,4 @@ Datasets, checkpoints, logs, and generated caches are not included.
 
 ## License
 
-MIT License. See `LICENSE`.
+MIT License. See [LICENSE](LICENSE).
