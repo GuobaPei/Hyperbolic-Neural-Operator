@@ -23,8 +23,8 @@ preferred-citation:
   collection-title: "Proceedings of the 43rd International Conference on Machine Learning"
   publisher:
     name: "PMLR"
-  volume: 306
   year: 2026
+  url: "https://icml.cc/virtual/2026/poster/65554"
   authors:
     - family-names: Pei
       given-names: Jieyuan
