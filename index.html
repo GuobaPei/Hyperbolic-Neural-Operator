@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hyperbolic Neural Operator | ICML 2026</title>
+    <meta name="description" content="Project page for Hyperbolic Neural Operator, a hierarchy-aware neural operator for PDE surrogate modeling.">
+    <meta name="author" content="Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, Jianwei Zheng">
+    <meta property="og:title" content="Hyperbolic Neural Operator">
+    <meta property="og:description" content="Hyperbolic geometry for scalable near-far routing in neural operators.">
+    <meta property="og:image" content="assets/hero-fmm-scene.png">
+    <meta name="theme-color" content="#161616">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-nav" aria-label="Primary navigation">
+      <a class="brand" href="#top">HNO</a>
+      <nav>
+        <a href="#method">Method</a>
+        <a href="#toy">Toy</a>
+        <a href="#results">Results</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top" aria-label="Hyperbolic Neural Operator">
+        <div class="hero-copy">
+          <p class="eyebrow">ICML 2026 / Neural Operators for PDEs</p>
+          <h1>Hyperbolic Neural Operator</h1>
+          <p class="hero-authors">
+            Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, Jianwei Zheng
+          </p>
+          <p class="hero-affiliations">
+            Zhejiang University of Technology / Tongji University
+          </p>
+          <p class="hero-lede">
+            HNO reframes neural operator learning as learning the physical
+            approximation structure of fast solvers: resolve near fields
+            directly, compress far fields hierarchically.
+          </p>
+          <div class="hero-actions" aria-label="Project links">
+            <a class="button primary" href="assets/paper.pdf">Paper PDF</a>
+            <a class="button secondary" href="https://icml.cc/virtual/2026/poster/65554">ICML Page</a>
+            <a class="button secondary" href="https://github.com/GuobaPei/Hyperbolic-Neural-Operator">Code</a>
+            <a class="button secondary" href="#citation">BibTeX</a>
+          </div>
+          <div class="hero-stats" aria-label="Key paper statistics">
+            <span><strong>6</strong> PDE benchmarks</span>
+            <span><strong>2</strong> large-scale CFD tasks</span>
+            <span><strong>32k</strong> mesh nodes per sample</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="reframe band">
+        <div class="reframe-shell">
+          <div class="reframe-head">
+            <p class="eyebrow dark">What We Learn</p>
+            <h2>Not just an infinite-dimensional map, but a fast physical approximation.</h2>
+          </div>
+          <div class="reframe-layout">
+            <div class="reframe-copy">
+              <p>
+                Classical neural operators are often described as learning a
+                solution operator between function spaces. HNO shifts the emphasis:
+                for PDE surrogate modeling, the key structure is the same one used
+                by the Fast Multipole Method and hierarchical matrices.
+              </p>
+              <p>
+                Nearby interactions are kept detailed; distant interactions are
+                routed through compressed summaries. Hyperbolic geometry gives this
+                near-far approximation a continuous, learnable coordinate system.
+              </p>
+            </div>
+            <figure class="image-frame motivation-frame">
+              <img src="assets/motivation-transparent.png" alt="Near-field, far-field, hierarchical tree, and hyperbolic geometry motivation">
+              <figcaption>HNO targets the same near-far approximation pattern used by FMM and hierarchical matrices: precise local interactions plus compressed far-field summaries.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro band">
+        <div class="section-head">
+          <p class="eyebrow dark">Why Hyperbolic Geometry</p>
+          <h2>Physical interactions are not uniformly expensive.</h2>
+        </div>
+        <div class="intro-grid">
+          <article class="claim-card">
+            <span class="claim-index">01</span>
+            <h3>Near-far decomposition</h3>
+            <p>
+              Nearby interactions need fine precision, while distant regions are
+              often compressible into lower-rank summaries.
+            </p>
+          </article>
+          <article class="claim-card">
+            <span class="claim-index">02</span>
+            <h3>Tree-like structure</h3>
+            <p>
+              Fast solvers exploit recursive hierarchies, but Euclidean space
+              distorts exponentially branching structures.
+            </p>
+          </article>
+          <article class="claim-card">
+            <span class="claim-index">03</span>
+            <h3>Lorentz routing</h3>
+            <p>
+              HNO defines a stabilized Gibbs kernel from hyperbolic geodesic
+              distances, giving attention an explicit scale coordinate.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="method visual-band" id="method">
+        <div class="copy-block">
+          <p class="eyebrow dark">Method</p>
+          <h2>Attention as a continuous hyperbolic kernel.</h2>
+          <p>
+            Query and key features are lifted to the Lorentz hyperboloid. Their
+            stabilized geodesic distance is converted into attention weights, so
+            the model learns a near-far routing kernel rather than an unrestricted
+            Euclidean token mixer.
+          </p>
+          <dl class="fact-list">
+            <div>
+              <dt>Core kernel</dt>
+              <dd>Gibbs attention from negative Lorentz distance</dd>
+            </div>
+            <div>
+              <dt>Routing bias</dt>
+              <dd>Global aggregation at small radius, local focus at large radius</dd>
+            </div>
+            <div>
+              <dt>Interaction cost</dt>
+              <dd>Reduced from O(N^2) to O(NM + M^2) with an M-token core</dd>
+            </div>
+          </dl>
+        </div>
+        <figure class="image-frame wide">
+          <img src="assets/hyperbolic-attention-transparent.png" alt="Hyperbolic-distance attention block in the Lorentz model">
+          <figcaption>Hyperbolic-distance attention converts Lorentz geodesic distance into routing weights.</figcaption>
+        </figure>
+      </section>
+
+      <section class="toy band" id="toy">
+        <div class="section-head">
+          <p class="eyebrow dark">Toy Experiment</p>
+          <h2>Can attention fit a multiscale tree kernel?</h2>
+          <p>
+            The controlled toy in the main paper uses graph diffusion on a
+            complete binary tree. The target kernel is row-stochastic, with
+            entries decaying with tree distance, so the problem exposes exactly
+            the hierarchical near-far structure that FMM-style approximations
+            exploit.
+          </p>
+        </div>
+        <div class="toy-grid">
+          <figure class="image-frame toy-frame">
+            <img src="assets/toy-tree-fitting-transparent.png" alt="Toy multiscale tree-kernel fitting comparing ground truth, hyperbolic, dot-product, and MLP attention">
+            <figcaption>Main-paper toy: multiscale tree-kernel fitting. Hyperbolic distance attention tracks the block-hierarchical target kernel more faithfully as N grows.</figcaption>
+          </figure>
+          <div class="toy-copy">
+            <article>
+              <span class="claim-index">Target</span>
+              <h3>Graph diffusion on tree leaves</h3>
+              <p>
+                A signal on the leaves is diffused by a kernel whose weights
+                decay with shortest-path distance on the tree.
+              </p>
+            </article>
+            <article>
+              <span class="claim-index">Structure</span>
+              <h3>Discrete interaction scales</h3>
+              <p>
+                Shared ancestors induce nested blocks: close leaves need strong
+                local coupling, while far leaves are grouped into coarser
+                summaries.
+              </p>
+            </article>
+            <article>
+              <span class="claim-index">Result</span>
+              <h3>Hyperbolic fits the hierarchy</h3>
+              <p>
+                Dot-product attention misses the tree metric, while hyperbolic
+                distance preserves the multiscale block structure expected from
+                near-far physical approximation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="results band" id="results">
+        <div class="section-head">
+          <p class="eyebrow dark">Results</p>
+          <h2>Lower relative l2 error across diverse PDE geometries.</h2>
+          <p>
+            HNO is evaluated against 19 neural operator baselines over point
+            clouds, regular grids, and structured meshes.
+          </p>
+        </div>
+
+        <div class="result-shell">
+          <div class="benchmark-picker" role="tablist" aria-label="Benchmark selector">
+            <button class="active" type="button" role="tab" aria-selected="true" data-key="elasticity">Elasticity</button>
+            <button type="button" role="tab" aria-selected="false" data-key="navier">Navier-Stokes</button>
+            <button type="button" role="tab" aria-selected="false" data-key="darcy">Darcy</button>
+            <button type="button" role="tab" aria-selected="false" data-key="plasticity">Plasticity</button>
+            <button type="button" role="tab" aria-selected="false" data-key="airfoil">Airfoil</button>
+            <button type="button" role="tab" aria-selected="false" data-key="pipe">Pipe</button>
+          </div>
+
+          <div class="selected-result" aria-live="polite">
+            <div>
+              <span class="result-label" id="result-geometry">Point Cloud</span>
+              <h3 id="result-name">Elasticity</h3>
+            </div>
+            <div class="metric-row">
+              <div>
+                <span>HNO error</span>
+                <strong id="result-hno">0.0037</strong>
+              </div>
+              <div>
+                <span>Second best</span>
+                <strong id="result-second">0.0064</strong>
+              </div>
+              <div>
+                <span>Relative reduction</span>
+                <strong id="result-gain">42.2%</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrap" aria-label="Main benchmark results">
+            <table>
+              <thead>
+                <tr>
+                  <th>Benchmark</th>
+                  <th>Geometry</th>
+                  <th>HNO</th>
+                  <th>Second best</th>
+                  <th>Reduction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Elasticity</td><td>Point Cloud</td><td>0.0037</td><td>0.0064</td><td>42.2%</td></tr>
+                <tr><td>Navier-Stokes</td><td>Regular Grid</td><td>0.0676</td><td>0.0892</td><td>24.2%</td></tr>
+                <tr><td>Darcy</td><td>Regular Grid</td><td>0.0045</td><td>0.0054</td><td>16.7%</td></tr>
+                <tr><td>Plasticity</td><td>Structured Mesh</td><td>0.0009</td><td>0.0012</td><td>25.0%</td></tr>
+                <tr><td>Airfoil</td><td>Structured Mesh</td><td>0.0048</td><td>0.0053</td><td>9.4%</td></tr>
+                <tr><td>Pipe</td><td>Structured Mesh</td><td>0.0027</td><td>0.0042</td><td>35.7%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="efficiency band">
+        <div class="efficiency-layout">
+        <div class="copy-block">
+          <p class="eyebrow dark">Efficiency</p>
+          <h2>Compact operators without giving up accuracy.</h2>
+          <p>
+            On Darcy, HNO keeps the model compact and reduces the memory and
+            latency burden relative to transformer-style operator baselines.
+          </p>
+          <div class="efficiency-grid">
+            <article>
+              <span>Params</span>
+              <strong>0.82M</strong>
+              <p>vs. 2.83M+ for compared transformer baselines</p>
+            </article>
+            <article>
+              <span>VRAM</span>
+              <strong>0.227 GB</strong>
+              <p>vs. 2.18 GB for Transolver and 6.07 GB for Transolver++</p>
+            </article>
+            <article>
+              <span>Inference</span>
+              <strong>4.47 ms/b</strong>
+              <p>vs. 26.10 ms/b for Transolver on Darcy</p>
+            </article>
+          </div>
+        </div>
+        <div class="efficiency-panel" aria-label="Darcy efficiency comparison">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow dark">Darcy Comparison</p>
+              <h3>Accuracy, parameters, memory, and runtime</h3>
+            </div>
+            <span>Lower is better</span>
+          </div>
+          <div class="mini-table">
+            <div class="mini-row header">
+              <span>Method</span><span>Rel. l2</span><span>Params</span><span>VRAM</span><span>Train</span><span>Infer</span>
+            </div>
+            <div class="mini-row best">
+              <span>HNO</span><span>0.00446</span><span>0.82M</span><span>0.227 GB</span><span>0.73 h</span><span>4.47 ms/b</span>
+            </div>
+            <div class="mini-row">
+              <span>Transolver</span><span>0.00567</span><span>2.83M</span><span>2.18 GB</span><span>2.76 h</span><span>26.10 ms/b</span>
+            </div>
+            <div class="mini-row">
+              <span>Transolver++</span><span>0.00560</span><span>2.84M</span><span>6.07 GB</span><span>3.12 h</span><span>74.77 ms/b</span>
+            </div>
+            <div class="mini-row">
+              <span>RNO</span><span>0.00535</span><span>2.83M</span><span>2.87 GB</span><span>5.26 h</span><span>28.40 ms/b</span>
+            </div>
+          </div>
+          <div class="bar-board" aria-label="Relative efficiency bars">
+            <div class="bar-line"><span>Params</span><i style="--w:29%"></i><strong>0.82M vs 2.83M+</strong></div>
+            <div class="bar-line"><span>VRAM</span><i style="--w:10%"></i><strong>0.227 GB vs 2.18 GB+</strong></div>
+            <div class="bar-line"><span>Infer</span><i style="--w:17%"></i><strong>4.47 ms/b vs 26.10 ms/b+</strong></div>
+          </div>
+          <figure class="image-frame strip compact-strip">
+            <img src="assets/pdebench-errors-transparent.png" alt="Qualitative PDEBench error maps for HNO and Transolver++">
+            <figcaption>Representative PDEBench error maps for HNO vs. Transolver++.</figcaption>
+          </figure>
+        </div>
+        </div>
+      </section>
+
+      <section class="large-scale band" id="large-scale">
+        <div class="section-head">
+          <p class="eyebrow dark">Large-Scale CFD</p>
+          <h2>Scaling to unstructured meshes with about 32k nodes.</h2>
+          <p>
+            HNO is also evaluated on ShapeNet Car and AirfRANS, where cleaner
+            residual patterns and improved coefficient prediction support the
+            same hierarchy-aware routing behavior at industrial mesh scale.
+          </p>
+        </div>
+        <div class="media-grid">
+          <figure class="image-frame">
+            <img src="assets/cfd-errors-transparent.png" alt="Prediction error maps on ShapeNet Car and AirfRANS">
+            <figcaption>Velocity and surface-pressure error maps for large-scale CFD tasks.</figcaption>
+          </figure>
+          <figure class="image-frame scatter-frame">
+            <div class="coefficient-summary" aria-label="Coefficient error summary">
+              <div>
+                <span>Lift coefficient</span>
+                <strong>HNO better on 75%</strong>
+                <p>Median absolute error: 0.029 to 0.012</p>
+              </div>
+              <div>
+                <span>Drag coefficient</span>
+                <strong>HNO better on 65%</strong>
+                <p>Median relative error: 0.013 to 0.009</p>
+              </div>
+            </div>
+            <img src="assets/joint-scatter-transparent.png" alt="Per-sample coefficient errors for ShapeNet Car and AirfRANS">
+            <figcaption>Per-sample lift and drag coefficient errors; points below the diagonal favor HNO.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="analysis visual-band" id="analysis">
+        <div class="copy-block">
+          <p class="eyebrow dark">Mechanism</p>
+          <h2>Radius becomes an operational scale coordinate.</h2>
+          <p>
+            The learned hyperbolic radius is negatively correlated with attention
+            entropy and receptive-field span: small-radius tokens aggregate
+            globally, while large-radius tokens specialize locally.
+          </p>
+          <div class="mechanism-points">
+            <span>Lower entropy at larger radius</span>
+            <span>Shorter physical attention span</span>
+            <span>Consistent head-wise trends</span>
+          </div>
+        </div>
+        <figure class="image-frame wide">
+          <img src="assets/mechanism-transparent.png" alt="Mechanism verification showing radius, attention entropy, and receptive field">
+          <figcaption>Elasticity mechanism verification links hyperbolic radius to attention locality.</figcaption>
+        </figure>
+      </section>
+
+      <section class="citation band" id="citation">
+        <div class="section-head">
+          <p class="eyebrow dark">Citation</p>
+          <h2>Reference</h2>
+          <p>
+            Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, and Jianwei Zheng.
+            Zhejiang University of Technology and Tongji University.
+            Correspondence: Jianwei Zheng.
+          </p>
+        </div>
+        <div class="citation-box">
+          <pre id="bibtex">@inproceedings{hno2026,
+  title     = {Hyperbolic Neural Operator},
+  author    = {Pei, Jieyuan and Li, Zhuoxuan and Li, Wei and Zhang, Haobo and Jiang, Jiawei and Zheng, Jianwei},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  publisher = {PMLR},
+  year      = {2026},
+  url       = {https://icml.cc/virtual/2026/poster/65554}
+}</pre>
+          <button class="button secondary" type="button" id="copy-bib">Copy BibTeX</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Hyperbolic Neural Operator</span>
+      <a href="assets/paper.pdf">Paper PDF</a>
+      <a href="https://github.com/GuobaPei/Hyperbolic-Neural-Operator">Code</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
