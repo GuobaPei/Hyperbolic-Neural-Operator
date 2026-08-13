@@ -2,6 +2,8 @@
 
 ### Hyperbolic geometry for hierarchy-aware PDE operator learning
 
+[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?style=flat-square)](https://openreview.net/pdf?id=CUQwYTTNu8)
+[![OpenReview](https://img.shields.io/badge/OpenReview-CUQwYTTNu8-8c1b13?style=flat-square)](https://openreview.net/forum?id=CUQwYTTNu8)
 [![ICML 2026](https://img.shields.io/badge/ICML-2026-d45b3f?style=flat-square)](https://icml.cc/virtual/2026/poster/65554)
 [![Project](https://img.shields.io/badge/Project-HNO-258f86?style=flat-square)](https://guobapei.github.io/Hyperbolic-Neural-Operator/)
 [![Code](https://img.shields.io/badge/Code-GitHub-24292f?style=flat-square&logo=github)](https://github.com/GuobaPei/Hyperbolic-Neural-Operator)
