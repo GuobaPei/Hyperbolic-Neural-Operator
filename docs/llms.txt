@@ -1,0 +1,19 @@
+# Hyperbolic Neural Operator (HNO)
+
+> ICML 2026 paper on Lorentz-distance attention for multiscale PDE operator learning, by Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, Jianwei Zheng.
+
+HNO uses hyperbolic latent geometry to organize near–far interactions. Evaluated tasks include Elasticity, Navier–Stokes, Darcy, Plasticity, Airfoil, Pipe, AirfRANS and ShapeNet Car.
+
+## Paper
+- [Abstract, research summary and results](https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.html): Contributions, benchmark values, comparison conditions and citation.
+- [Original paper PDF](https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf): Author-provided 59-page manuscript with figures, equations, references and appendix.
+- [Complete paper as plain text](https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.txt): Text extracted from the PDF.
+- [Complete paper as HTML](https://guobapei.github.io/Hyperbolic-Neural-Operator/fulltext.html): Extracted text with links to original PDF pages.
+- [Markdown research summary](https://guobapei.github.io/Hyperbolic-Neural-Operator/summary.md): Abstract, method overview, benchmark table and citation.
+
+## Citation and code
+- [BibTeX](https://guobapei.github.io/Hyperbolic-Neural-Operator/citation.bib): Conference citation.
+- [Structured paper metadata](https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.json): Schema.org ScholarlyArticle metadata.
+- [Official code](https://github.com/GuobaPei/Hyperbolic-Neural-Operator): Models, training scripts and quick start.
+- [OpenReview](https://openreview.net/forum?id=CUQwYTTNu8): Conference review record.
+- [ICML](https://icml.cc/virtual/2026/poster/65554): Official conference entry.

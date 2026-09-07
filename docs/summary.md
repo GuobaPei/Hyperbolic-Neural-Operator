@@ -1,79 +1,41 @@
-# Hyperbolic Neural Operator
+# Hyperbolic Neural Operator (HNO)
 
-### Hyperbolic geometry for hierarchy-aware PDE operator learning
+ICML 2026 · PMLR 306
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?style=flat-square)](https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf)
-[![OpenReview](https://img.shields.io/badge/OpenReview-CUQwYTTNu8-8c1b13?style=flat-square)](https://openreview.net/forum?id=CUQwYTTNu8)
-[![ICML 2026](https://img.shields.io/badge/ICML-2026-d45b3f?style=flat-square)](https://icml.cc/virtual/2026/poster/65554)
-[![Project](https://img.shields.io/badge/Project-HNO-258f86?style=flat-square)](https://guobapei.github.io/Hyperbolic-Neural-Operator/)
-[![Code](https://img.shields.io/badge/Code-GitHub-24292f?style=flat-square&logo=github)](https://github.com/GuobaPei/Hyperbolic-Neural-Operator)
-[![License](https://img.shields.io/badge/License-MIT-7fbf3f?style=flat-square)](LICENSE)
+Authors: Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, Jianwei Zheng
 
-🎉 **Hyperbolic Neural Operator (HNO) has been accepted to ICML 2026.**
-
-We present **HNO**, a neural operator that learns near-far interaction routing
-with stabilized Lorentz-hyperbolic distance kernels. HNO gives tokens a learned
-scale coordinate, enabling compact hierarchical PDE surrogate modeling across
-regular grids, structured meshes, point clouds, and large-scale CFD.
-
-Key contributions include:
-
-- **Hyperbolic routing kernel:** replaces dot-product token mixing with
-  stabilized hyperbolic-distance attention.
-- **Near-far physical organization:** learns FMM-inspired local-detail and
-  far-field-summary structure without hand-built trees.
-- **Broad PDE and CFD validation:** includes PDEBench tasks plus AirfRANS and
-  ShapeNetCar large-scale unstructured meshes.
-
-## Paper and research resources
-
-- [Abstract and benchmark results](https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.html)
-- [Full paper PDF](https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf) · [Full-text HTML](https://guobapei.github.io/Hyperbolic-Neural-Operator/fulltext.html) · [Plain text](https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.txt)
-- [Markdown research summary](https://guobapei.github.io/Hyperbolic-Neural-Operator/summary.md) · [BibTeX](https://guobapei.github.io/Hyperbolic-Neural-Operator/citation.bib) · [Structured metadata](https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.json)
+[Project](https://guobapei.github.io/Hyperbolic-Neural-Operator/) · [Paper PDF](https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf) · [Full text](https://guobapei.github.io/Hyperbolic-Neural-Operator/fulltext.html) · [OpenReview](https://openreview.net/forum?id=CUQwYTTNu8) · [Code](https://github.com/GuobaPei/Hyperbolic-Neural-Operator)
 
 ## Abstract
 
 Neural operators learn solution operators for parametric PDE families, mapping coefficients, forcing fields, or geometric inputs to full solution fields and thereby accelerating scientific computation. Transformer-based architectures offer strong flexibility on irregular domains, but dense dot-product attention often allocates pairwise scoring uniformly across token pairs, neglecting that far-field interactions in many discretized PDE kernels are numerically compressible. To address this mismatch, we draw inspiration from classical fast solvers that exploit hierarchical near–far organization. We further observe that embedding such tree-structured hierarchies in Euclidean space incurs inherent distortion, whereas hyperbolic space naturally accommodates exponential branching. Consequently, we propose Hyperbolic Neural Operator (HNO), which leverages intrinsic hyperbolic geometry to instantiate a continuous Gibbs kernel based on stabilized geodesic distances on the Lorentz hyperboloid. This design imposes a geometric inductive bias for learnable multi-scale near–far routing within a unified attention mechanism. Empirically, HNO achieves the lowest error among the evaluated methods on six PDE benchmarks and two large-scale unstructured CFD tasks, reducing the mean relative ℓ2 error by up to 40% in the best evaluated setting. Code is available in the GitHub repository.
 
-## Research context
+## Research summary
 
 Hyperbolic Neural Operator (HNO) is an ICML 2026 method for learning solution operators of parametric partial differential equations. It maps input fields or geometric descriptors to solution fields. HNO uses stabilized geodesic distances on the Lorentz hyperboloid to construct a Gibbs attention kernel. This geometry provides an inductive bias for hierarchical near–far interaction routing, inspired by the organization of classical fast solvers. Here, hyperbolic refers to the learned representation geometry; the evaluated tasks span multiple PDE families. Far-field compressibility refers to numerical or low-rank structure in interactions. The paper evaluates HNO on Elasticity, Navier–Stokes, Darcy, Plasticity, Airfoil and Pipe, plus the AirfRANS and ShapeNet Car CFD benchmarks with approximately 32,000 mesh nodes per sample. The released implementations use geometry-specific tokenization, including patch-based grid models and summary-token processing for point clouds. The paper also examines hierarchical tree-kernel fitting, attention locality, and Darcy ablations. HNO is relevant to research on efficient neural operators, non-Euclidean attention, multiscale physical interactions, and PDE surrogates on irregular meshes. Reported accuracy and efficiency values describe the paper’s evaluated protocols.
 
-## 📊 Overview
+## Benchmarks
 
-<p align="center">
-  <img src="figures/hno_motivation.png" alt="HNO overview" width="900">
-</p>
+Table 2 of the paper reports mean relative ℓ2 error; lower is better. HNO results on the six standard PDE benchmarks are averaged over three runs unless otherwise noted. Baseline values follow official reports or authors’ implementations. HNO experiments use a single NVIDIA A6000 48GB GPU. Relative reduction is (second-best error − HNO error) / second-best error, using the displayed rounded values.
 
-## 🚀 Quick Start
+| Benchmark | Geometry | HNO | Second best | Relative reduction |
+| --- | --- | ---: | ---: | ---: |
+| Elasticity | Point cloud | 0.0037 | 0.0064 | 42.2% |
+| Navier–Stokes | Regular grid | 0.0676 | 0.0892 | 24.2% |
+| Darcy | Regular grid | 0.0045 | 0.0054 | 16.7% |
+| Plasticity | Structured mesh | 0.0009 | 0.0012 | 25.0% |
+| Airfoil | Structured mesh | 0.0048 | 0.0053 | 9.4% |
+| Pipe | Structured mesh | 0.0027 | 0.0042 | 35.7% |
 
-```bash
-python -m venv .venv_pdebench
-source .venv_pdebench/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements_pdebench.txt
-bash scripts/smoke_test.sh
-```
+## Efficiency
 
-Run one task:
+Table 3 reports a Darcy configuration with 0.82M parameters, 0.227 GB VRAM, 0.73 h training time and 4.47 ms per batch inference time. Baselines in Table 3 use their official configurations and are not parameter-matched to HNO. Appendix J.1 / Table 12 provides a separate parameter-matched microbenchmark. These timing and memory values belong to the stated Darcy experiments.
 
-```bash
-python -m pdebench.scripts.train_darcy --data_path <DARCY_DATA_DIR>
-```
+## 中文简介
 
-## 📁 Repository
+Hyperbolic Neural Operator（HNO，双曲神经算子）发表于 ICML 2026，利用 Lorentz 双曲空间中的测地距离构造 attention 核，学习 PDE 的多尺度近场与远场交互。这里的“双曲”指模型的表征几何；实验覆盖 Darcy、弹性力学、Navier–Stokes 等不同 PDE，以及 AirfRANS 和 ShapeNet Car 非结构网格 CFD 任务。
 
-```text
-pdebench/       HNO models, configs, and PDEBench training scripts
-large_scale/    AirfRANS and ShapeNetCar code
-scripts/        setup, smoke-test, and run wrappers
-docs/           project website source
-figures/        README figures
-```
-
-Datasets, checkpoints, logs, and generated caches are not included.
-
-## 📝 Citation
+## Citation
 
 ```bibtex
 @inproceedings{hno2026,
@@ -87,7 +49,3 @@ Datasets, checkpoints, logs, and generated caches are not included.
   url       = {https://icml.cc/virtual/2026/poster/65554}
 }
 ```
-
-## License
-
-MIT License. See [LICENSE](LICENSE).

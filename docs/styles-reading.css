@@ -1,0 +1,13 @@
+/* Reading and discovery resources share the existing project typography. */
+.research-copy,.protocol-note{max-width:1080px;margin-left:auto;margin-right:auto}
+.research-copy h2{max-width:none}.resource-links a,.protocol-note a,.reading-main a,.reading-footer a{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.abstract p{font-size:1.04rem}.protocol-note{font-size:.94rem}.site-footer{flex-wrap:wrap;gap:18px}
+.reading-nav{display:flex;justify-content:space-between;align-items:center;gap:20px;max-width:1160px;margin:auto;padding:24px 28px;border-bottom:1px solid var(--line)}
+.reading-nav>a{font-weight:800}.reading-nav nav{display:flex;flex-wrap:wrap;gap:18px;font-size:.94rem}
+.reading-main{max-width:1056px;margin:0 auto;padding:42px 28px 64px}.reading-main h1{font-size:clamp(2.2rem,5vw,3.7rem);line-height:1.07;max-width:none;margin-bottom:20px}
+.reading-main section{margin:40px 0;scroll-margin-top:24px}.reading-main h2{font-size:1.8rem}.reading-main h3{margin-top:24px}.paper-authors{font-weight:650}
+.reading-main pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.91rem;line-height:1.6}.citation-pre{padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.reading-main caption{text-align:left;padding:12px 0;font-weight:650}.reading-main li{margin:12px 0}.reading-footer{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;border-top:1px solid var(--line);padding:28px;font-size:.92rem}
+.page-links{display:flex;flex-wrap:wrap;gap:8px}.page-links a{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:34px;border:1px solid var(--line);border-radius:5px}
+.text-page{border-top:1px solid var(--line);padding-top:26px}.text-page pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;line-height:1.65}
+@media(max-width:600px){.reading-nav{align-items:flex-start;flex-direction:column;padding:18px 20px}.reading-main{padding:30px 20px 46px}.reading-main h2{font-size:1.55rem}.reading-nav nav{gap:14px}.reading-main pre{font-size:.82rem}.citation-pre{padding:14px}.site-nav .brand{margin-right:14px}.site-nav nav{white-space:nowrap}}
