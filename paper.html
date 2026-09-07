@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hyperbolic Neural Operator | HNO · ICML 2026</title><meta name="description" content="Hyperbolic Neural Operator (HNO), ICML 2026: Lorentz-distance attention for multiscale PDE operator learning on grids and irregular meshes. Paper, code, results and citation.">
+<link rel="canonical" href="https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="citation_title" content="Hyperbolic Neural Operator">
+<meta name="citation_author" content="Jieyuan Pei">
+<meta name="citation_author" content="Zhuoxuan Li">
+<meta name="citation_author" content="Wei Li">
+<meta name="citation_author" content="Haobo Zhang">
+<meta name="citation_author" content="Jiawei Jiang">
+<meta name="citation_author" content="Jianwei Zheng">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_conference_title" content="Proceedings of the 43rd International Conference on Machine Learning">
+<meta name="citation_volume" content="306">
+<meta name="citation_publisher" content="PMLR">
+<meta name="citation_pdf_url" content="https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf">
+<meta name="citation_abstract_html_url" content="https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.html">
+<link rel="alternate" type="text/markdown" href="https://guobapei.github.io/Hyperbolic-Neural-Operator/summary.md" title="Research summary">
+<link rel="alternate" type="text/plain" href="https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.txt" title="Full paper text">
+<link rel="sitemap" type="application/xml" href="https://guobapei.github.io/Hyperbolic-Neural-Operator/sitemap.xml">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://guobapei.github.io/Hyperbolic-Neural-Operator/#paper",
+  "name": "Hyperbolic Neural Operator",
+  "headline": "Hyperbolic Neural Operator",
+  "alternateName": "HNO",
+  "url": "https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.html",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Jieyuan Pei",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Zhuoxuan Li",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Tongji University"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Wei Li",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Haobo Zhang",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Jiawei Jiang",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Jianwei Zheng",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    }
+  ],
+  "datePublished": "2026",
+  "inLanguage": "en",
+  "abstract": "Neural operators learn solution operators for parametric PDE families, mapping coefficients, forcing fields, or geometric inputs to full solution fields and thereby accelerating scientific computation. Transformer-based architectures offer strong flexibility on irregular domains, but dense dot-product attention often allocates pairwise scoring uniformly across token pairs, neglecting that far-field interactions in many discretized PDE kernels are numerically compressible. To address this mismatch, we draw inspiration from classical fast solvers that exploit hierarchical near–far organization. We further observe that embedding such tree-structured hierarchies in Euclidean space incurs inherent distortion, whereas hyperbolic space naturally accommodates exponential branching. Consequently, we propose Hyperbolic Neural Operator (HNO), which leverages intrinsic hyperbolic geometry to instantiate a continuous Gibbs kernel based on stabilized geodesic distances on the Lorentz hyperboloid. This design imposes a geometric inductive bias for learnable multi-scale near–far routing within a unified attention mechanism. Empirically, HNO achieves the lowest error among the evaluated methods on six PDE benchmarks and two large-scale unstructured CFD tasks, reducing the mean relative ℓ2 error by up to 40% in the best evaluated setting. Code is available in the GitHub repository.",
+  "description": "Hyperbolic Neural Operator (HNO), ICML 2026: Lorentz-distance attention for multiscale PDE operator learning on grids and irregular meshes. Paper, code, results and citation.",
+  "keywords": [
+    "neural operators",
+    "hyperbolic geometry",
+    "Lorentz-distance attention",
+    "multiscale PDE surrogate modeling",
+    "near-far interactions",
+    "irregular meshes",
+    "scientific machine learning",
+    "Darcy flow",
+    "AirfRANS",
+    "ShapeNet Car"
+  ],
+  "isPartOf": {
+    "@type": "PublicationVolume",
+    "volumeNumber": "306",
+    "name": "Proceedings of the 43rd International Conference on Machine Learning",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Proceedings of Machine Learning Research"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PMLR"
+  },
+  "sameAs": [
+    "https://openreview.net/forum?id=CUQwYTTNu8",
+    "https://icml.cc/virtual/2026/poster/65554"
+  ],
+  "encoding": [
+    {
+      "@type": "MediaObject",
+      "encodingFormat": "application/pdf",
+      "contentUrl": "https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf"
+    },
+    {
+      "@type": "MediaObject",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.txt"
+    }
+  ],
+  "associatedMedia": {
+    "@type": "SoftwareSourceCode",
+    "name": "HNO official implementation",
+    "codeRepository": "https://github.com/GuobaPei/Hyperbolic-Neural-Operator"
+  }
+}</script>
+<link rel="stylesheet" href="styles.css"></head>
+<body class="reading-page"><header class="reading-nav"><a href="./">HNO / Project</a><nav><a href="paper.html">Paper &amp; results</a><a href="fulltext.html">Full text</a><a href="assets/paper.pdf">PDF</a><a href="https://github.com/GuobaPei/Hyperbolic-Neural-Operator">Code</a></nav></header>
+<main class="reading-main"><p class="eyebrow dark">ICML 2026 · Research paper</p><h1>Hyperbolic Neural Operator</h1><p class="paper-authors">Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, Jianwei Zheng</p><p>Zhejiang University of Technology · Tongji University · Zhejiang Key Laboratory of Visual Information Intelligent Processing</p>
+<p class="resource-links"><a href="assets/paper.pdf">PDF · 59 pages</a> · <a href="fulltext.html">Full text</a> · <a href="https://openreview.net/forum?id=CUQwYTTNu8">OpenReview</a> · <a href="https://icml.cc/virtual/2026/poster/65554">ICML</a> · <a href="https://github.com/GuobaPei/Hyperbolic-Neural-Operator">Code</a> · <a href="#citation">Citation</a></p>
+<section id="abstract"><h2>Abstract</h2><p>Neural operators learn solution operators for parametric PDE families, mapping coefficients, forcing fields, or geometric inputs to full solution fields and thereby accelerating scientific computation. Transformer-based architectures offer strong flexibility on irregular domains, but dense dot-product attention often allocates pairwise scoring uniformly across token pairs, neglecting that far-field interactions in many discretized PDE kernels are numerically compressible. To address this mismatch, we draw inspiration from classical fast solvers that exploit hierarchical near–far organization. We further observe that embedding such tree-structured hierarchies in Euclidean space incurs inherent distortion, whereas hyperbolic space naturally accommodates exponential branching. Consequently, we propose Hyperbolic Neural Operator (HNO), which leverages intrinsic hyperbolic geometry to instantiate a continuous Gibbs kernel based on stabilized geodesic distances on the Lorentz hyperboloid. This design imposes a geometric inductive bias for learnable multi-scale near–far routing within a unified attention mechanism. Empirically, HNO achieves the lowest error among the evaluated methods on six PDE benchmarks and two large-scale unstructured CFD tasks, reducing the mean relative ℓ2 error by up to 40% in the best evaluated setting. Code is available in the GitHub repository.</p></section>
+<section id="summary"><h2>Research summary</h2><p>Hyperbolic Neural Operator (HNO) is an ICML 2026 method for learning solution operators of parametric partial differential equations. It maps input fields or geometric descriptors to solution fields. HNO uses stabilized geodesic distances on the Lorentz hyperboloid to construct a Gibbs attention kernel. This geometry provides an inductive bias for hierarchical near–far interaction routing, inspired by the organization of classical fast solvers. Here, hyperbolic refers to the learned representation geometry; the evaluated tasks span multiple PDE families. Far-field compressibility refers to numerical or low-rank structure in interactions. The paper evaluates HNO on Elasticity, Navier–Stokes, Darcy, Plasticity, Airfoil and Pipe, plus the AirfRANS and ShapeNet Car CFD benchmarks with approximately 32,000 mesh nodes per sample. The released implementations use geometry-specific tokenization, including patch-based grid models and summary-token processing for point clouds. The paper also examines hierarchical tree-kernel fitting, attention locality, and Darcy ablations. HNO is relevant to research on efficient neural operators, non-Euclidean attention, multiscale physical interactions, and PDE surrogates on irregular meshes. Reported accuracy and efficiency values describe the paper’s evaluated protocols.</p></section>
+<section id="research-context"><h2>Research context</h2>
+<h3>Multiscale neural operators and near–far interactions</h3><p>HNO studies a geometric inductive bias for detailed local interactions and compressed distant interactions. Its Lorentz-distance kernel is inspired by hierarchical fast solvers and hierarchical matrices. The tree-diffusion toy experiment isolates this multiscale interaction structure.</p>
+<h3>Hyperbolic attention for PDE surrogate modeling</h3><p>In HNO, “hyperbolic” describes the latent geometry used for attention. It does not restrict the method to hyperbolic PDEs: evaluated tasks include Darcy flow and elasticity. The paper’s use of “compressible” concerns numerical or low-rank compressibility of far-field interactions.</p>
+<h3>Neural operators on irregular meshes</h3><p>The paper evaluates point clouds, structured meshes, regular grids, and unstructured CFD meshes. AirfRANS and ShapeNet Car provide approximately 32k-node examples. Geometry-specific implementations use patchification or summary tokens; their computational costs depend on the selected architecture and token budget.</p></section>
+<section id="results"><h2>Benchmark results</h2><p>Table 2 of the paper reports mean relative ℓ2 error; lower is better. HNO results on the six standard PDE benchmarks are averaged over three runs unless otherwise noted. Baseline values follow official reports or authors’ implementations. HNO experiments use a single NVIDIA A6000 48GB GPU. Relative reduction is (second-best error − HNO error) / second-best error, using the displayed rounded values.</p><div class="table-wrap"><table><caption>Paper Table 2: mean relative ℓ2 error</caption><thead><tr><th scope="col">Benchmark</th><th scope="col">Geometry</th><th scope="col">HNO</th><th scope="col">Second best</th><th scope="col">Relative reduction</th></tr></thead><tbody><tr><td>Elasticity</td><td>Point cloud</td><td>0.0037</td><td>0.0064</td><td>42.2%</td></tr><tr><td>Navier–Stokes</td><td>Regular grid</td><td>0.0676</td><td>0.0892</td><td>24.2%</td></tr><tr><td>Darcy</td><td>Regular grid</td><td>0.0045</td><td>0.0054</td><td>16.7%</td></tr><tr><td>Plasticity</td><td>Structured mesh</td><td>0.0009</td><td>0.0012</td><td>25.0%</td></tr><tr><td>Airfoil</td><td>Structured mesh</td><td>0.0048</td><td>0.0053</td><td>9.4%</td></tr><tr><td>Pipe</td><td>Structured mesh</td><td>0.0027</td><td>0.0042</td><td>35.7%</td></tr></tbody></table></div><p>Source: <a href="assets/paper.pdf#page=7">paper Table 2</a>. The abstract uses “up to 40%”; the rounded Elasticity entries in Table 2 give 42.2%.</p></section>
+<section id="efficiency"><h2>Darcy efficiency and comparison conditions</h2><p>Table 3 reports a Darcy configuration with 0.82M parameters, 0.227 GB VRAM, 0.73 h training time and 4.47 ms per batch inference time. Baselines in Table 3 use their official configurations and are not parameter-matched to HNO. Appendix J.1 / Table 12 provides a separate parameter-matched microbenchmark. These timing and memory values belong to the stated Darcy experiments.</p><p><a href="assets/paper.pdf#page=8">Table 3</a> · <a href="assets/paper.pdf#page=36">Appendix J.1 and Table 12</a></p></section>
+<section id="resources"><h2>Paper and implementation</h2><p>The PDF is the author-provided manuscript, including its appendix. The HTML and plain-text full versions are extracted from that same PDF; the PDF retains the original equations, figures and table layout.</p><ul><li><a href="assets/paper.pdf">Complete paper PDF</a></li><li><a href="fulltext.html">Full paper text, organized by PDF page</a></li><li><a href="paper.txt">Download plain-text full paper</a></li><li><a href="summary.md">Download Markdown research summary</a></li><li><a href="https://github.com/GuobaPei/Hyperbolic-Neural-Operator">Official code and quick start</a></li></ul></section>
+<section id="citation"><h2>Citation</h2><p>Jieyuan Pei, Zhuoxuan Li, Wei Li, Haobo Zhang, Jiawei Jiang, Jianwei Zheng. Hyperbolic Neural Operator. Proceedings of the 43rd International Conference on Machine Learning, PMLR 306, 2026.</p><pre class="citation-pre">@inproceedings{hno2026,
+  title     = {Hyperbolic Neural Operator},
+  author    = {Pei, Jieyuan and Li, Zhuoxuan and Li, Wei and Zhang, Haobo and Jiang, Jiawei and Zheng, Jianwei},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {306},
+  publisher = {PMLR},
+  year      = {2026},
+  url       = {https://icml.cc/virtual/2026/poster/65554}
+}
+</pre><a href="citation.bib">Download BibTeX</a></section></main><footer class="reading-footer"><a href="citation.bib">BibTeX</a><a href="summary.md">Markdown summary</a><a href="paper.txt">Full paper text</a><a href="llms.txt">Resource index</a><a href="https://openreview.net/forum?id=CUQwYTTNu8">OpenReview</a></footer></body></html>

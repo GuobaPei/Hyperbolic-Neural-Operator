@@ -1,0 +1,109 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://guobapei.github.io/Hyperbolic-Neural-Operator/#paper",
+  "name": "Hyperbolic Neural Operator",
+  "headline": "Hyperbolic Neural Operator",
+  "alternateName": "HNO",
+  "url": "https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.html",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Jieyuan Pei",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Zhuoxuan Li",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Tongji University"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Wei Li",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Haobo Zhang",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Jiawei Jiang",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Jianwei Zheng",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Zhejiang University of Technology"
+      }
+    }
+  ],
+  "datePublished": "2026",
+  "inLanguage": "en",
+  "abstract": "Neural operators learn solution operators for parametric PDE families, mapping coefficients, forcing fields, or geometric inputs to full solution fields and thereby accelerating scientific computation. Transformer-based architectures offer strong flexibility on irregular domains, but dense dot-product attention often allocates pairwise scoring uniformly across token pairs, neglecting that far-field interactions in many discretized PDE kernels are numerically compressible. To address this mismatch, we draw inspiration from classical fast solvers that exploit hierarchical near–far organization. We further observe that embedding such tree-structured hierarchies in Euclidean space incurs inherent distortion, whereas hyperbolic space naturally accommodates exponential branching. Consequently, we propose Hyperbolic Neural Operator (HNO), which leverages intrinsic hyperbolic geometry to instantiate a continuous Gibbs kernel based on stabilized geodesic distances on the Lorentz hyperboloid. This design imposes a geometric inductive bias for learnable multi-scale near–far routing within a unified attention mechanism. Empirically, HNO achieves the lowest error among the evaluated methods on six PDE benchmarks and two large-scale unstructured CFD tasks, reducing the mean relative ℓ2 error by up to 40% in the best evaluated setting. Code is available in the GitHub repository.",
+  "description": "Hyperbolic Neural Operator (HNO), ICML 2026: Lorentz-distance attention for multiscale PDE operator learning on grids and irregular meshes. Paper, code, results and citation.",
+  "keywords": [
+    "neural operators",
+    "hyperbolic geometry",
+    "Lorentz-distance attention",
+    "multiscale PDE surrogate modeling",
+    "near-far interactions",
+    "irregular meshes",
+    "scientific machine learning",
+    "Darcy flow",
+    "AirfRANS",
+    "ShapeNet Car"
+  ],
+  "isPartOf": {
+    "@type": "PublicationVolume",
+    "volumeNumber": "306",
+    "name": "Proceedings of the 43rd International Conference on Machine Learning",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Proceedings of Machine Learning Research"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PMLR"
+  },
+  "sameAs": [
+    "https://openreview.net/forum?id=CUQwYTTNu8",
+    "https://icml.cc/virtual/2026/poster/65554"
+  ],
+  "encoding": [
+    {
+      "@type": "MediaObject",
+      "encodingFormat": "application/pdf",
+      "contentUrl": "https://guobapei.github.io/Hyperbolic-Neural-Operator/assets/paper.pdf"
+    },
+    {
+      "@type": "MediaObject",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://guobapei.github.io/Hyperbolic-Neural-Operator/paper.txt"
+    }
+  ],
+  "associatedMedia": {
+    "@type": "SoftwareSourceCode",
+    "name": "HNO official implementation",
+    "codeRepository": "https://github.com/GuobaPei/Hyperbolic-Neural-Operator"
+  }
+}
